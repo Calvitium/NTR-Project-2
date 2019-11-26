@@ -1,0 +1,90 @@
+@model IEnumerable<NTR02.Models.Note>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    String currentDate = DateTime.Now.Year.ToString() + '-' + DateTime.Now.Month.ToString("D2") + '-' + DateTime.Now.Day.ToString("D2");
+    String maxDate =  (DateTime.Now.Year + 1).ToString() + '-' + DateTime.Now.Month.ToString("D2") + '-' + DateTime.Now.Day.ToString("D2");
+    DateTime fromDate = NotebookControl.fromDate;
+    DateTime toDate = NotebookControl.toDate;
+    String filterCat = NotebookControl.filterCat;
+}
+ <div class = "well">
+            <form asp-action="Filter" asp-controller="Notebook">    
+                <div class = "row">
+                    <div class="col-sm-3">
+                        From: 
+                        <input type="date" name = "from" value = @currentDate> 
+                    </div>
+                    <div class="col-sm-3">
+                        To:
+                        <input type="date" name = "to" value = @maxDate> 
+                    </div>
+                    <div class="col-sm-4">
+                        Category:
+                        <input type="text" name = "category">
+                    </div>
+                    <div class="col-sm-2">
+                        <div class = "btn-group">
+                            <input type="submit" value="Filter">
+                            <a asp-action="DeleteFilter" asp-controller="Notebook" class="btn btn-default">Delete Filter</a>
+                        </div>
+                    </div>
+
+            
+                </div>
+            </form>
+            <table class="table table-bordered" style="border:3px">
+                <thead style="background-color:grey">
+                <tr>
+                    <th style="width:100px; color:white">Date</th>
+                    <th style="color:white">Title</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @foreach (var item in Model)
+                {
+                    @if(item.ReleaseDate >= fromDate && item.ReleaseDate <= toDate)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReleaseDate) 
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Title)
+                        <div align="right">
+                        <a asp-action="Edit" asp-route-id= "@item.NoteID" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id= "@item.NoteID" class="btn btn-danger">Delete</a>
+                        </div>
+                        </td>
+                    </tr>
+                    }
+                }                     
+                </tbody>
+            </table>
+
+            <hr />
+            
+            <div class = "row">
+                <div class="col-sm-6">
+                    <div class="btn-group">
+                    <a asp-controller="Notebook" asp-action="Create" type = "button" class="btn btn-success">New</a>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <a asp-controller="Notebook" asp-action="PreviousPage" type = "button" class="btn btn-default">Previous Page</a>
+                </div>
+                <div class ="col-sm-2"> Page: 1 </div>
+                <div class="col-sm-2">
+                    <a asp-controller="Notebook" asp-action="NextPage" type = "button" class="btn btn-default">Next Page</a>
+                </div>
+
+        
+            </div>
+            <hr />
+            
+
+
+        </div>
+
