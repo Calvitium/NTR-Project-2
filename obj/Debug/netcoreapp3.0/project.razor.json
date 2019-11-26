@@ -14344,11 +14344,6 @@
   "RootNamespace": "NTR02",
   "Documents": [
     {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategory/Details.cshtml",
-      "TargetPath": "Views/NoteCategory/Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Note/Edit.cshtml",
       "TargetPath": "Views/Note/Edit.cshtml",
       "FileKind": "mvc"
@@ -14359,23 +14354,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategory/Edit.cshtml",
-      "TargetPath": "Views/NoteCategory/Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategoryControllesr/Delete.cshtml",
-      "TargetPath": "Views/NoteCategoryControllesr/Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Note/Delete.cshtml",
       "TargetPath": "Views/Note/Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategory/Create.cshtml",
-      "TargetPath": "Views/NoteCategory/Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14386,11 +14366,6 @@
     {
       "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Home/Privacy.cshtml",
       "TargetPath": "Views/Home/Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Category/Delete.cshtml",
-      "TargetPath": "Views/Category/Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14414,16 +14389,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategory/Delete.cshtml",
-      "TargetPath": "Views/NoteCategory/Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Category/Index.cshtml",
-      "TargetPath": "Views/Category/Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Note/Details.cshtml",
       "TargetPath": "Views/Note/Details.cshtml",
       "FileKind": "mvc"
@@ -14439,11 +14404,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategory/Index.cshtml",
-      "TargetPath": "Views/NoteCategory/Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views/Shared/_Layout.cshtml",
       "FileKind": "mvc"
@@ -14454,33 +14414,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Category/Create.cshtml",
-      "TargetPath": "Views/Category/Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Category/Details.cshtml",
-      "TargetPath": "Views/Category/Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategoryControllesr/Create.cshtml",
-      "TargetPath": "Views/NoteCategoryControllesr/Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategoryControllesr/Edit.cshtml",
-      "TargetPath": "Views/NoteCategoryControllesr/Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Notebook/Create.cshtml",
       "TargetPath": "Views/Notebook/Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategoryControllesr/Index.cshtml",
-      "TargetPath": "Views/NoteCategoryControllesr/Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14489,18 +14424,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Category/Edit.cshtml",
-      "TargetPath": "Views/Category/Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/Notebook/Index.cshtml",
       "TargetPath": "Views/Notebook/Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ubuntu18/NTR-Project-2-master/NTR02/Views/NoteCategoryControllesr/Details.cshtml",
-      "TargetPath": "Views/NoteCategoryControllesr/Details.cshtml",
       "FileKind": "mvc"
     }
   ],
