@@ -55,8 +55,7 @@ namespace NTR02.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NoteID,Title,Content,ReleaseDate")] Note note,
-        string Category)
+        public async Task<IActionResult> Create([Bind("NoteID,Title,Content,ReleaseDate")] Note note, string Category)
         {
             if (ModelState.IsValid)
             {
@@ -65,10 +64,14 @@ namespace NTR02.Controllers
                 category.Name = Category;
                
                 _context.Add(note);
+                if(_context.Note.Where(NotImplementedException => NotImplementedException.Title == note.Title).First() == null)
+                    _context.Add(note);
+                else
+                    return View(note);
                 _context.Add(category);
                 await _context.SaveChangesAsync();
                 
-                 noteCategory.NoteID = _context.Note.Where(notie => notie.Title == note.Title).First().NoteID;
+                noteCategory.NoteID = _context.Note.Where(notie => notie.Title == note.Title).First().NoteID;
                 noteCategory.CategoryID = _context.Category.Where(cat => cat.Name == category.Name).First().CategoryID;
                 _context.Add(noteCategory);
                 await _context.SaveChangesAsync();
