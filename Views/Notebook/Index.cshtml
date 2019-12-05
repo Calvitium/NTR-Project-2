@@ -1,0 +1,161 @@
+@model IEnumerable<NTR02.Models.Note>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    
+    DateTime fromDate = NotebookControl.fromDate;
+    DateTime toDate = NotebookControl.toDate;
+    String currentDate = fromDate.Year.ToString() + '-' + fromDate.Month.ToString("D2") + '-' + fromDate.Day.ToString("D2");
+    String maxDate =  toDate.Year.ToString() + '-' + toDate.Month.ToString("D2") + '-' + toDate.Day.ToString("D2");
+    String filterCat = NotebookControl.filterCat;
+    
+    List<NTR02.Models.Note> filteredNotes = new List<NTR02.Models.Note>();
+    foreach(var item in ViewBag.Notes)
+    {
+        
+            bool categoriesMatch = false;
+            if(filterCat == null)
+                categoriesMatch = true;
+            else
+            {
+                foreach(var nCat in ViewBag.NoteCategories)
+                {
+                    if(categoriesMatch)
+                        break;
+                    if(nCat.NoteID == item.NoteID)
+                    {
+                        foreach(var cat in ViewBag.Categories)
+                        {
+                            if(cat.Name== NotebookControl.filterCat && cat.CategoryID == nCat.CategoryID)
+                            {
+                                categoriesMatch = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            if(item.NoteDate >= fromDate && item.NoteDate <= toDate && categoriesMatch)
+            {
+                if(filteredNotes.Count()==0)
+                    filteredNotes.Add(item);
+                else
+                {
+                    int i = 0;
+                    do
+                    {    
+                        if(item.NoteDate <= filteredNotes.ElementAt(i).NoteDate)
+                        {
+                            filteredNotes.Insert(i,item);
+                            break;
+                        }
+                        i++;
+                    }while(i< filteredNotes.Count());
+                    if(i==filteredNotes.Count())
+                        filteredNotes.Add(item);
+                }
+            }   
+         
+    }
+
+    int notesCount = filteredNotes.Count();
+    int curPage = NotebookControl.page;
+    int displayLimit = curPage * 10 > notesCount ? notesCount: curPage*10;
+    NotebookControl.filteredNotesCount = filteredNotes.Count();
+    int maxPage = (filteredNotes.Count()-1)/10 +1;
+}
+ <div class = "well">
+        <form asp-action="Filter" asp-controller="Notebook">    
+            <div class = "row">
+                <div class="col-sm-3">
+                    From: 
+                    <input type="date" name = "from" value = @currentDate> 
+                </div>
+                <div class="col-sm-3">
+                    To:
+                    <input type="date" name = "to" value = @maxDate> 
+                </div>
+                <div class="col-sm-4">
+                    Category:
+                    <select name = "category" style="width:250px">
+                        @{
+                            if(NotebookControl.filterCat == null){
+                                <option value=@null> < All > </option>
+                            }
+                            if(NotebookControl.filterCat != null){ 
+                                <option value=@NotebookControl.filterCat>@NotebookControl.filterCat</option>
+                                <option value=@null> < All > </option>
+                            }
+                         
+                            foreach(var category in ViewBag.Categories){
+                                if(category.Name == NotebookControl.filterCat)
+                                    continue;
+                                <option value="@category.Name">@category.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <div class = "btn-group">
+                        <input type="submit" value="Filter" class="btn btn-secondary">
+                    </div>
+                        <a asp-action="DeleteFilter" asp-controller="Notebook" class="btn btn-secondary">Clear</a>
+                </div>        
+            </div>
+        </form>
+            <table class="table table-bordered" >
+                <thead style="background-color:grey" >
+                <tr>
+                    <th style="width:120px">Date</th>
+                    <th>Title</th>
+                    <th style="width:170px">Action</th>
+                </tr>
+                </thead>
+                <tbody style="background-color:white">
+
+                @for(int i = (curPage - 1) * 10; i<displayLimit ;i++)
+                {
+                    var item = @filteredNotes.ElementAt(i);
+                    
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoteDate) 
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                        <div  align="right">
+                        <a asp-action="Edit" asp-route-id= "@item.NoteID" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id= "@item.NoteID" class="btn btn-danger">Delete</a>
+                        </div>
+                        </td>
+                    </tr>
+                    
+                }                     
+                </tbody>
+            </table>
+
+            <hr />
+            
+            <div class = "row">
+                <div class="col-sm-6">
+                    <div class="btn-group">
+                    <a asp-controller="Notebook" asp-action="Create" type = "button" class="btn btn-success">New</a>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <a asp-controller="Notebook" asp-action="PreviousPage" type = "button" class="btn btn-info">Previous Page</a>
+                </div>
+                <div class ="col-sm-2"> Page: @curPage / @maxPage </div>
+                <div class="col-sm-2">
+                    <a asp-controller="Notebook" asp-action="NextPage" type = "button" class="btn btn-info">Next Page</a>
+                </div>        
+            </div>
+            <hr />
+            
+
+
+        </div>
+
